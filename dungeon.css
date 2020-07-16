@@ -1,0 +1,79 @@
+@import url("https://fonts.googleapis.com/css2?family=Grenze:ital,wght@0,400;0,600;1,400&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  box-sizing: border-box;
+  font-family: "Grenze", serif;
+}
+#player {
+  position: absolute;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 0.25rem 0.75rem;
+  color: #607d8b;
+  /* text-shadow: 1px 1px 0 #000; */
+  /* box-shadow: 2px 2px 0 #333; */
+}
+.game {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 25vmin);
+  grid-template-rows: repeat(3, 25vmin);
+  justify-items: center;
+  align-items: center;
+  grid-template-areas:
+    "x1y1 x2y1 x3y1"
+    "x1y2 x2y2 x3y2"
+    "x1y3 x2y3 x3y3";
+}
+.gameField {
+  border-right: 1px dotted #000;
+  border-bottom: 1px dotted #000;
+  width: 100%;
+  height: 100%;
+}
+
+#field_x1y1 {
+  grid-area: x1y1;
+}
+#field_x1y2 {
+  grid-area: x1y2;
+}
+#field_x1y3 {
+  grid-area: x1y3;
+}
+#field_x2y1 {
+  grid-area: x2y1;
+}
+#field_x2y2 {
+  grid-area: x2y2;
+}
+#field_x2y3 {
+  grid-area: x2y3;
+}
+#field_x3y1 {
+  grid-area: x3y1;
+}
+#field_x3y2 {
+  grid-area: x3y2;
+}
+#field_x3y3 {
+  grid-area: x3y3;
+}
+/* #455a64
+Light primary color
+#cfd8dc
+Primary color
+#607d8b
+Text / Icons
+#FFFFFF
+Accent color
+#9e9e9e
+Primary text
+#212121
+Secondary text
+#757575
+Divider color
+#BDBDBD */
