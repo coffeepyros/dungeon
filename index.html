@@ -3,32 +3,48 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dungeon</title>
+    <title>Cells</title>
     <link rel="stylesheet" href="dungeon.css" />
   </head>
   <body>
-    <header>
-      <h1>Dungeon</h1>
-    </header>
-    <main class="game">
-      <figure id="player" role="group">
-        <figure id="playerArrowUp">^</figure>
-        <figure id="playerArrowLeft">&gt;</figure>
-        <figure id="playerArrowRigt">&lt;</figure>
-        <figure id="playerArrowDown">v</figure>
-        <figure id="playerIcon">P</figure>
-      </figure>
-      <figure class="gameField" id="field_x1y1"></figure>
-      <figure class="gameField" id="field_x2y1"></figure>
-      <figure class="gameField" id="field_x3y1"></figure>
-      <figure class="gameField" id="field_x1y2"></figure>
-      <figure class="gameField" id="field_x2y2"></figure>
-      <figure class="gameField" id="field_x3y2"></figure>
-      <figure class="gameField" id="field_x1y3"></figure>
-      <figure class="gameField" id="field_x2y3"></figure>
-      <figure class="gameField" id="field_x3y3"></figure>
-    </main>
-    <footer></footer>
+    <article id="dungeon">
+      <header>
+        <h1>Cells of Confusion</h1>
+      </header>
+      <main id="map">
+        <!-- <figure id="player" role="group">
+          <figure id="playerIcon">P</figure>
+          <button id="playerArrowUp">&uarr;</button>
+          <button id="playerArrowLeft">&larr;</button>
+          <button id="playerArrowRight">&rarr;</button>
+          <button id="playerArrowDown">&darr;</button>
+        </figure> -->
+      </main>
+      <aside id="info">
+        <h2>(Character Name)</h2>
+        <ul>
+          <li>Stats:</li>
+          <ul>
+            <li>Body: 1 &rarr; HP: 5/5</li>
+            <li>Mind: 1 &rarr; Mana: 5/5</li>
+            <li>Spirit: 1 &rarr; Prayers: 1/1</li>
+            <li>XP: 0 &rarr; Level: 1</li>
+          </ul>
+          <li>Equipment:</li>
+          <ul>
+            <li>Head: <em>Rusted Iron Helmet</em></li>
+            <li>Torso: <em>Prison Guard Uniform</em></li>
+            <li>Left Hand: empty</li>
+            <li>Right Hand: <em>Wood Club</em></li>
+            <li>Legs: <em>Loin Cloth</em></li>
+            <li>Feet: empty</li>
+          </ul>
+          <li>Spells:</li>
+          <li>Inventory:</li>
+        </ul>
+      </aside>
+      <footer>Use arrow keys to navigate</footer>
+    </article>
     <script src="dungeon.js"></script>
   </body>
 </html>
