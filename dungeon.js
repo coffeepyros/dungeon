@@ -46,9 +46,12 @@ function reDraw() {
 
 // Moves the player to a new position, specified by (x,y)
 function go(NewX, NewY) {
+  // If you want to move onto a cell with a monster in it,
+  // you fight it instead of moving onto the cell.
   if (NewX == monster.posX && NewY == monster.posY) {
     alert("Bonk!");
-  } else {
+    // Checking if new position is inside the map grid
+  } else if (NewX > 0 && NewY > 0 && NewX <= MapSizeX && NewY <= MapSizeY) {
     player.posX = NewX;
     player.posY = NewY;
   }
