@@ -42,6 +42,10 @@ h1 {
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(7, 1fr);
 }
+#player {
+  position: relative;
+  font-size: 2rem;
+}
 #info {
   outline: 1px solid #000;
   /* background-color: #999; */
