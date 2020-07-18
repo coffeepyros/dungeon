@@ -9,7 +9,7 @@
   <body>
     <article id="dungeon">
       <header>
-        <h1>Cells of Confusion</h1>
+        <h1 id="title">Cells of Confusion</h1>
       </header>
       <main id="map">
         <!-- <figure id="player" role="group">
@@ -20,28 +20,58 @@
           <button id="playerArrowDown">&darr;</button>
         </figure> -->
       </main>
-      <aside id="info">
-        <h2>(Character Name)</h2>
+      <nav id="info_tabs">
         <ul>
-          <li>Stats:</li>
+          <li onclick="switchTabs('character')">Character [C]</li>
+          <li onclick="switchTabs('inventory')">Inventory [I]</li>
+          <li onclick="switchTabs('spells')">Spells [S]</li>
+        </ul>
+      </nav>
+      <aside id="info">
+        <section id="character">
+          <h2>(Character Name)</h2>
           <ul>
             <li>Body: 1 &rarr; HP: 5/5</li>
             <li>Mind: 1 &rarr; Mana: 5/5</li>
             <li>Spirit: 1 &rarr; Prayers: 1/1</li>
+          </ul>
+          <ul>
             <li>XP: 0 &rarr; Level: 1</li>
           </ul>
-          <li>Equipment:</li>
+        </section>
+        <section id="inventory" style="display: none;">
+          <h2>Inventory</h2>
+          <figure id="equipment" role="group">
+            <figure id="equipment_head">
+              <strong>Head</strong><br />Rusted Iron Helmet
+            </figure>
+            <figure id="equipment_hand1">
+              <strong>Hand #1</strong><br />Wooden Club
+            </figure>
+            <figure id="equipment_torso">
+              <strong>Torso</strong><br /><em>empty</em>
+            </figure>
+            <figure id="equipment_hand2">
+              <strong>Hand #2</strong><br /><em>empty</em>
+            </figure>
+            <figure id="equipment_legs">
+              <strong>Legs</strong><br /><em>empty</em>
+            </figure>
+            <figure id="equipment_feet">
+              <strong>Feet</strong><br /><em>empty</em>
+            </figure>
+          </figure>
+        </section>
+        <section id="spells" style="display: none;">
+          <h2>Spells</h2>
           <ul>
-            <li>Head: <em>Rusted Iron Helmet</em></li>
-            <li>Torso: <em>Prison Guard Uniform</em></li>
-            <li>Left Hand: empty</li>
-            <li>Right Hand: <em>Wood Club (1D6)</em></li>
-            <li>Legs: <em>Loin Cloth</em></li>
-            <li>Feet: empty</li>
+            <li><a href="#">Healing Hands</a> (heals 1D6 damage)</li>
+            <li>
+              <a href="#">Lightning Strike</a> (inflict 1D6 magical damage)
+            </li>
+            <li><a href="#">Prophetic Vision</a></li>
           </ul>
-          <li>Spells:</li>
-          <li>Inventory:</li>
-        </ul>
+        </section>
       </aside>
       <footer id="status">Use arrow keys to navigate</footer>
     </article>

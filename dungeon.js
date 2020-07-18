@@ -20,6 +20,7 @@ const monster = {
   posY: Math.floor(Math.random() * MapSizeY) + 1,
   symbol: "M",
   hp: 10,
+  ac: 7,
 };
 
 // Monster (single for now) starting position
@@ -45,7 +46,11 @@ function drawMap() {
       ) {
         // draw a monster symbol
         output += `<span id="monster">${monster.symbol}</span>`;
-      } else if (player.posX == CellX && player.posY == CellY) {
+      } else if (
+        player.posX == CellX &&
+        player.posY == CellY &&
+        teleport == false
+      ) {
         // draw a player symbol
         output += `<span id="player">${player.symbol}</span>`;
       }
@@ -75,6 +80,7 @@ function go(NewX, NewY) {
   if (teleport == true) {
     location.reload();
   }
+  // If you want to move onto the stairs
   if (NewX == stairs.posX && NewY == stairs.posY) {
     player.posX = NewX;
     player.posY = NewY;
@@ -91,33 +97,62 @@ function go(NewX, NewY) {
     player.posX = NewX;
     player.posY = NewY;
   }
-  if (teleport == false) {
-    reDrawMap();
-  }
+  reDrawMap();
 }
 
 function fight() {
-  let roll = Math.floor(Math.random() * 6) + 1;
-  status.innerHTML = `Bonk! You inflicted <span class="color_damage">${roll}</span> Damage.`;
-  monster.hp -= roll;
-  if (monster.hp <= 0) {
-    status.innerHTML += " You killed the monster!";
-    // Removing the monster by moving it "outside" the map
-    monster.posX = -1;
-    monster.posY = -1;
+  let attackRoll = Math.floor(Math.random() * 20) + 1;
+  console.log(attackRoll);
+  // Attack test: attackRoll vs. monster.ac (armor class)
+  if (attackRoll > monster.ac) {
+    let damageRoll = Math.floor(Math.random() * 6) + 1;
+    status.innerHTML = `Bonk! You inflicted <span class="color_damage">${damageRoll}</span> Damage.`;
+    monster.hp -= damageRoll;
+    if (monster.hp <= 0) {
+      status.innerHTML += " You killed the monster!";
+      // Removing the monster by moving it "outside" the map
+      monster.posX = -1;
+      monster.posY = -1;
+    }
+  } else {
+    status.innerHTML = `Woosh! You swing your (weapon) and miss.`;
+  }
+}
+
+function switchTabs(tab) {
+  let tabs = ["character", "inventory", "spells"];
+  for (let i = 0; i < tabs.length; i++) {
+    if (tabs[i] == tab) {
+      document.getElementById(tabs[i]).style = "";
+    } else {
+      document.getElementById(tabs[i]).style = "display: none;";
+    }
   }
 }
 
 document.onkeyup = function (e) {
   status.innerHTML = "";
   if (e.which == 37) {
+    // Arrow Key Left
     go(player.posX - 1, player.posY);
   } else if (e.which == 38) {
+    // Arrow Key Up
     go(player.posX, player.posY - 1);
   } else if (e.which == 39) {
+    // Arrow Key Right
     go(player.posX + 1, player.posY);
   } else if (e.which == 40) {
+    // Arrow Key Down
     go(player.posX, player.posY + 1);
+  } else if (e.which == 67) {
+    // Key: C
+    switchTabs("character");
+  } else if (e.which == 73) {
+    // Key: I
+    switchTabs("inventory");
+  } else if (e.which == 83) {
+    // Key: S
+    switchTabs("spells");
   }
 };
 

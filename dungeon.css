@@ -55,11 +55,43 @@ h1 {
   grid-row: 2 / span 7;
   padding: 0.5rem;
 }
+#info_tabs {
+  grid-column: 10 / span 6;
+  grid-row: 1/2;
+  align-self: end;
+}
+#info_tabs ul {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  margin-left: 0.5rem;
+}
+#info_tabs li {
+  border-width: 1px 1px 0 1px;
+  border-color: #000;
+  border-style: solid;
+  padding: 0 0.5rem;
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+#info_tabs li:hover {
+  background-color: #c00;
+  color: #fff;
+}
+
 h2 {
   font-size: 1.33rem;
 }
-ul {
-  margin-left: 1rem;
+#info ul {
+  margin-left: 1.33rem;
+  margin-bottom: 0.67rem;
+}
+#info li {
+  color: #383838;
+}
+#info a {
+  text-decoration: none;
+  border-bottom: 1px dashed #000;
 }
 figure.cell {
   width: 80px;
