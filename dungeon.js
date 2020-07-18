@@ -96,10 +96,14 @@ function go(NewX, NewY) {
   else if (NewX > 0 && NewY > 0 && NewX <= MapSizeX && NewY <= MapSizeY) {
     player.posX = NewX;
     player.posY = NewY;
+    moveMonster();
   }
   reDrawMap();
 }
 
+// Fight between the player and a monster
+// Rolling an attack based on a D20 vs. AC
+// In case of a successful hit -> roll damage
 function fight() {
   let attackRoll = Math.floor(Math.random() * 20) + 1;
   console.log(attackRoll);
@@ -119,6 +123,49 @@ function fight() {
   }
 }
 
+// Monster will follow the player and try to decrease the distance to them
+function moveMonster() {
+  let distanceX = Math.abs(player.posX - monster.posX);
+  let distanceY = Math.abs(player.posY - monster.posY);
+  console.log(distanceX, distanceY);
+  if (distanceX > distanceY) {
+    if (monster.posX < player.posX) {
+      monster.posX++;
+    } else if (monster.posX > player.posX) {
+      monster.posX--;
+    }
+  } else if (distanceX < distanceY) {
+    if (monster.posY < player.posY) {
+      monster.posY++;
+    } else if (monster.posY > player.posY) {
+      monster.posY--;
+    }
+  } else {
+    // If x-distance and y-distance are the same,
+    // randomly decide which to decrease
+    let decision = Math.floor(Math.random() * 2) + 1;
+    if (decision == 1) {
+      // In 50% (1 out of 2) of cases monster will decrease x-distance
+      if (monster.posX < player.posX) {
+        monster.posX++;
+      } else if (monster.posX > player.posX) {
+        monster.posX--;
+      }
+    } else {
+      // In the other 50% (2 out of 2) of cases monster will decrease y-distance
+      if (monster.posY < player.posY) {
+        monster.posY++;
+      } else if (monster.posY > player.posY) {
+        monster.posY--;
+      }
+    }
+  }
+  if (player.posX == monster.posX && player.posY == monster.posY) {
+    status.innerHTML = "NomNomNom!";
+  }
+}
+
+// Switches tabs in the INFO section at the right side
 function switchTabs(tab) {
   let tabs = ["character", "inventory", "spells"];
   for (let i = 0; i < tabs.length; i++) {
